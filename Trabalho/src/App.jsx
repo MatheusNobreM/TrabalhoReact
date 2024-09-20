@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Typography } from '@mui/material';
-import GastoForm from './components/GastoForm';
-import GastoList from './components/GastoList';
-import TotalGasto from './components/TotalGasto';
+import FormularioGasto from './componentes/FormularioGasto';
+import ListaGastos from './componentes/ListaGastos';
+import TotalGastos from './componentes/TotalGastos';
 
 function App() {
   const [gastos, setGastos] = useState([]);
@@ -11,8 +11,8 @@ function App() {
     setGastos([...gastos, gasto]);
   };
 
-  const removerGasto = (index) => {
-    const novosGastos = gastos.filter((_, i) => i !== index);
+  const removerGasto = (indice) => {
+    const novosGastos = gastos.filter((_, i) => i !== indice);
     setGastos(novosGastos);
   };
 
@@ -21,9 +21,9 @@ function App() {
       <Typography variant="h4" gutterBottom>
         Registro de Gastos
       </Typography>
-      <GastoForm adicionarGasto={adicionarGasto} />
-      <GastoList gastos={gastos} removerGasto={removerGasto} />
-      <TotalGasto gastos={gastos} />
+      <FormularioGasto adicionarGasto={adicionarGasto} />
+      <ListaGastos gastos={gastos} removerGasto={removerGasto} />
+      <TotalGastos gastos={gastos} />
     </Container>
   );
 }

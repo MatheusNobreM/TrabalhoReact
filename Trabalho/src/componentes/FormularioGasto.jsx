@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 
-function GastoForm({ adicionarGasto }) {
+function FormularioGasto({ adicionarGasto }) {
   const [gasto, setGasto] = useState({ nome: '', data: '', valor: '' });
 
-  const handleChange = (e) => {
+  const lidarComMudanca = (e) => {
     const { name, value } = e.target;
     setGasto({ ...gasto, [name]: value });
   };
 
-  const handleSubmit = () => {
+  const enviarFormulario = () => {
     adicionarGasto(gasto);
     setGasto({ nome: '', data: '', valor: '' });
   };
@@ -20,7 +20,7 @@ function GastoForm({ adicionarGasto }) {
         label="Nome"
         name="nome"
         value={gasto.nome}
-        onChange={handleChange}
+        onChange={lidarComMudanca}
         fullWidth
         margin="normal"
       />
@@ -29,7 +29,7 @@ function GastoForm({ adicionarGasto }) {
         name="data"
         type="date"
         value={gasto.data}
-        onChange={handleChange}
+        onChange={lidarComMudanca}
         fullWidth
         margin="normal"
         InputLabelProps={{
@@ -40,15 +40,15 @@ function GastoForm({ adicionarGasto }) {
         label="Valor (R$)"
         name="valor"
         value={gasto.valor}
-        onChange={handleChange}
+        onChange={lidarComMudanca}
         fullWidth
         margin="normal"
       />
-      <Button variant="contained" color="primary" onClick={handleSubmit}>
+      <Button variant="contained" color="primary" onClick={enviarFormulario}>
         Adicionar Gasto
       </Button>
     </div>
   );
 }
 
-export default GastoForm;
+export default FormularioGasto;
